@@ -16,7 +16,7 @@ function val = LUT_Tanh(x)
 	fLows = toFixed(_lBounds);
 	fVals = toFixed(_rVals);
 
-	s = toFixed(sign(x));
+	s = sign(x);
 	fMag = toFixed(abs(x));
 
 	if (fMag <= fLows(1))
@@ -24,7 +24,7 @@ function val = LUT_Tanh(x)
 	else
 		for i = [fLows; fVals]
 			if (fMag > i(1))
-				val = i(2)*s;
+				val = i(2).x*s;
 			endif
 		endfor
 	endif
