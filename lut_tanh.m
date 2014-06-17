@@ -20,7 +20,7 @@ function val = LUT_Tanh(x)
 	fMag = toFixed(abs(x));
 
 	if (fMag <= fLows(1))
-		val = fMag*s;
+		val = fMag.x*s;
 	else
 		for i = [fLows; fVals]
 			if (fMag > i(1))
