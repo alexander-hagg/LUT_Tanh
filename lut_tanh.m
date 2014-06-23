@@ -6,8 +6,8 @@ global _rVals	= [0.4049  , 0.4558  , 0.5038  , 0.5490  , 0.5911  , \
 				   0.6348  , 0.6791  , 0.7190  , 0.7609  , 0.8057  , \
 				   0.8493  , 0.8916  , 0.9329  , 0.9740  , 1.0000  ];
 
-global _iBits   = 8;
-global _fBits   = 8;
+global _iBits   = 2;
+global _fBits   = 14;
 
 function val = LUT_Tanh(x)
 	global _lBounds;
@@ -34,4 +34,11 @@ function f = toFixed(x)
 	global _iBits;
 	global _fBits;
 	f = fixed(_iBits, _fBits,x);
+endfunction
+
+function setPrecision(ib, fb)
+	global _iBits;
+	global _fBits;
+	_iBits = ib;
+	_fBits = fb;
 endfunction
