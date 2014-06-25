@@ -6,6 +6,7 @@ global _rVals	= [0.4049  , 0.4558  , 0.5038  , 0.5490  , 0.5911  , \
 				   0.6348  , 0.6791  , 0.7190  , 0.7609  , 0.8057  , \
 				   0.8493  , 0.8916  , 0.9329  , 0.9740  , 1.0000  ];
 
+#NOTE: Hardware range converter requires atleast 3 integer bits 
 global _iBits   = 3;
 global _fBits   = 13;
 
