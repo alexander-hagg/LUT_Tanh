@@ -32,25 +32,30 @@ function val = LUT_Tanh(x)
 
 	fLows = toFixed(_lBounds);
 	fVals = toFixed(_rVals);
+	val = zeros(size(x));
+	#handle matrices and vectors
+	for i = 1:rows(x)
+		for j = 1:columns(x)
+			s = sign(x(i,j));
+			fMag = toFixed(abs(x(i,j)));
 
-	s = sign(x);
-	fMag = toFixed(abs(x));
-
-	if (fMag <= fLows(1))
-		val = fMag.x*s;
-	else
-		for i = [fLows; fVals]
-			if (fMag > i(1))
-				val = i(2).x*s;
+			if (fMag <= fLows(1))
+				val(i,j) = fMag.x*s;
+			else
+				for c = [fLows; fVals]
+					if (fMag > c(1))
+						val(i,j) = c(2).x*s;
+					endif
+				endfor
 			endif
 		endfor
-	endif
+	endfor
 endfunction
 
 function f = toFixed(x)
 	global _iBits;
 	global _fBits;
-	f = fixed(_iBits, _fBits,x);
+	f = fixed(_iBits, _fBits, x);
 endfunction
 
 function setPrecision(ib, fb)
@@ -59,5 +64,3 @@ function setPrecision(ib, fb)
 	_iBits = ib;
 	_fBits = fb;
 endfunction
-
-
